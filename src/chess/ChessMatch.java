@@ -1,7 +1,6 @@
 package chess;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -77,7 +76,12 @@ public class ChessMatch {
 
 		check = testCheck(opponent(currentPlayer)) ? true : false;
 
-		nextTurn();
+		if (testCheckMate(opponent(currentPlayer))) {
+			checkMate = true;
+		} else {
+			nextTurn();
+		}
+
 		return (ChessPiece) capturedPiece;
 	}
 
